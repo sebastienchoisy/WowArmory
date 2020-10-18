@@ -1,0 +1,22 @@
+<label for="searchCharacter">Search a Character </label>
+<input [(ngModel)]="characterName" type="search" id="searchCharacter">
+<label for="searchRealm"></label>
+<select [(ngModel)]="realm" name="realm" id="searchRealm">
+  <option value="">--Please choose an option--</option>
+  <option value="ysondre">Ysondre</option>
+</select>
+<button (click)="onClick()">Click me!</button>
+<app-header></app-header>
+<div class="container">
+<div *ngIf="leftSideEquipment$ | async as equipments" class="itemsList">
+  <app-item *ngFor="let equippedItem of equipments" [textLeft]="false" [ngStyle]="{'flex-direction':'row-reverse'}" [itemId]="equippedItem.item.id"></app-item>
+</div>
+<div *ngIf="rightSideEquipment$ | async as equipments" class="itemsList">
+  <app-item *ngFor="let equippedItem of equipments" [textLeft]="true" [itemId]="equippedItem.item.id" ></app-item>
+</div>
+</div>
+<div class="container-middle">
+<div class="itemsList-middle" *ngIf="middleSideEquipment$ | async as equipments ">
+  <app-item *ngFor="let equippedItem of equipments" [itemId]="equippedItem.item.id" ></app-item>
+</div>
+</div>

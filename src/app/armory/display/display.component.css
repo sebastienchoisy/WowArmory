@@ -1,0 +1,25 @@
+
+.itemsList {
+  display: flex;
+  flex-direction: column;
+}
+.itemsList-middle{
+  display: flex;
+  flex-direction: row;
+
+}
+.container-middle{
+  display:flex;
+  justify-content: space-between;
+  width: 410px;
+  height: 80px;
+  margin:auto;
+}
+.container{
+  display:flex;
+  justify-content: space-between;
+  width: 750px;
+  height: 550px;
+  margin:auto;
+}
+

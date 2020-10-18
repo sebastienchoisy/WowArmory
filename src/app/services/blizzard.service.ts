@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {switchMap, take} from 'rxjs/operators';
-import {Observable, Subject} from 'rxjs';
+import {Observable, ReplaySubject, Subject} from 'rxjs';
 
 interface TokenReponse {
   access_token: string;
@@ -12,7 +12,7 @@ interface TokenReponse {
   providedIn: 'root'
 })
 export class BlizzardService {
-  private token$: Subject<string> = new Subject<string>();
+  private token$: ReplaySubject<string> = new ReplaySubject<string>(1);
   private baseUrl = 'https://eu.api.blizzard.com';
 
   constructor(private httpClient: HttpClient) {
@@ -27,10 +27,10 @@ export class BlizzardService {
     ).subscribe((res) => this.token$.next(res.access_token));
   }
 
-  public getCharAppearance(realm: string, name: string): Observable<any> {
+  public getCharEquipment(realm: string, name: string): Observable<any> {
     return this.token$.pipe(
       switchMap((token) =>
-        this.httpClient.get(this.baseUrl + '/profile/wow/character/' + realm + '/' + name + '/appearance?namespace=profile-eu&locale=en_gb&access_token=' + token)
+        this.httpClient.get(this.baseUrl + '/profile/wow/character/' + realm + '/' + name + '/equipment?namespace=profile-eu&locale=en_gb&access_token=' + token)
       )
     );
   }
@@ -41,6 +41,12 @@ export class BlizzardService {
       )
     );
   }
+  public getItemName(id: string): Observable<any>{
+    return this.token$.pipe(
+      switchMap((token) =>
+        this.httpClient.get(this.baseUrl + '/data/wow/item/' + id + '?namespace=static-eu&locale=en_gb&access_token=' + token)
+      )
+    );
 }
-
+}
 

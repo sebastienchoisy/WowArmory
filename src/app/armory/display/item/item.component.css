@@ -1,0 +1,21 @@
+.row-reverse{
+  flex-direction: row-reverse;
+}
+.row{
+  flex-direction: row;
+}
+
+.item-container{
+  margin:5px;
+  display:flex;
+}
+
+.img {
+  display:flex;
+
+}
+.itemName{
+  display:flex;
+  margin: 10px;
+
+}

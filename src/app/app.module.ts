@@ -4,18 +4,24 @@ import {HttpClientModule} from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 
-import { DisplayComponent } from './display/display.component';
-import { ItemComponent } from './display/item/item.component';
+import { DisplayComponent } from './armory/display/display.component';
+import { ItemComponent } from './armory/display/item/item.component';
+import {FormsModule} from '@angular/forms';
+import { ArmoryComponent } from './armory/armory.component';
+import { HeaderComponent } from './armory/display/header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DisplayComponent,
-    ItemComponent
+    ItemComponent,
+    ArmoryComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

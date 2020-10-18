@@ -1,0 +1,6 @@
+<div [ngClass]="{'row-reverse': textLeft == true}"  class="item-container" *ngIf="itemData$ | async as itemData">
+ <img [src]="itemData.assets[0].value" >
+  <div class="itemName" *ngIf="itemName$ |async as itemName">{{itemName.name}}</div>
+</div>
+
+
