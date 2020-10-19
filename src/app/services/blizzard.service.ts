@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {switchMap, take} from 'rxjs/operators';
-import {Observable, ReplaySubject, Subject} from 'rxjs';
+import {Observable, ReplaySubject} from 'rxjs';
 
 interface TokenReponse {
   access_token: string;
@@ -31,6 +31,13 @@ export class BlizzardService {
     return this.token$.pipe(
       switchMap((token) =>
         this.httpClient.get(this.baseUrl + '/profile/wow/character/' + realm + '/' + name + '/equipment?namespace=profile-eu&locale=en_gb&access_token=' + token)
+      )
+    );
+  }
+  public getCharAppearance(realm: string, name: string): Observable<any> {
+    return this.token$.pipe(
+      switchMap((token) =>
+        this.httpClient.get(this.baseUrl + '/profile/wow/character/' + realm + '/' + name + '/appearance?namespace=profile-eu&locale=en_gb&access_token=' + token)
       )
     );
   }

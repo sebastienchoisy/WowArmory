@@ -1,3 +1,14 @@
+<form>
+  <mat-form-field>
+    <mat-label>Favorite food</mat-label>
+    <input matInput placeholder="Ex. Pizza" value="Sushi">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Leave a comment</mat-label>
+    <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
+  </mat-form-field>
+</form>
 <label for="searchCharacter">Search a Character </label>
 <input [(ngModel)]="characterName" type="search" id="searchCharacter">
 <label for="searchRealm"></label>
@@ -5,7 +16,7 @@
   <option value="">--Please choose an option--</option>
   <option value="ysondre">Ysondre</option>
 </select>
-<button (click)="onClick()">Click me!</button>
+<button mat-raised-button class="search-button" (click)="onClick()">Rechercher</button>
 <app-header></app-header>
 <div class="container">
 <div *ngIf="leftSideEquipment$ | async as equipments" class="itemsList">

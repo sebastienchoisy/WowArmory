@@ -9,6 +9,8 @@ import { ItemComponent } from './armory/display/item/item.component';
 import {FormsModule} from '@angular/forms';
 import { ArmoryComponent } from './armory/armory.component';
 import { HeaderComponent } from './armory/display/header/header.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -18,11 +20,13 @@ import { HeaderComponent } from './armory/display/header/header.component';
     ArmoryComponent,
     HeaderComponent
   ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    FormsModule
-  ],
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        FormsModule,
+        MatFormFieldModule,
+        MatButtonModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

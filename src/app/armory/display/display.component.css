@@ -11,9 +11,14 @@
 .container-middle{
   display:flex;
   justify-content: space-between;
-  width: 410px;
+  width: 420px;
   height: 80px;
   margin:auto;
+}
+.search-button{
+  background: #932626;
+  color:white;
+  margin-left:10px;
 }
 .container{
   display:flex;
