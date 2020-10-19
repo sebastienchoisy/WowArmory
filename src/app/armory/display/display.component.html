@@ -1,33 +1,27 @@
-<form>
-  <mat-form-field>
-    <mat-label>Favorite food</mat-label>
-    <input matInput placeholder="Ex. Pizza" value="Sushi">
-  </mat-form-field>
-
-  <mat-form-field>
-    <mat-label>Leave a comment</mat-label>
-    <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
-  </mat-form-field>
-</form>
-<label for="searchCharacter">Search a Character </label>
-<input [(ngModel)]="characterName" type="search" id="searchCharacter">
-<label for="searchRealm"></label>
-<select [(ngModel)]="realm" name="realm" id="searchRealm">
-  <option value="">--Please choose an option--</option>
-  <option value="ysondre">Ysondre</option>
-</select>
-<button mat-raised-button class="search-button" (click)="onClick()">Rechercher</button>
-<app-header></app-header>
-<div class="container">
-<div *ngIf="leftSideEquipment$ | async as equipments" class="itemsList">
-  <app-item *ngFor="let equippedItem of equipments" [textLeft]="false" [ngStyle]="{'flex-direction':'row-reverse'}" [itemId]="equippedItem.item.id"></app-item>
-</div>
-<div *ngIf="rightSideEquipment$ | async as equipments" class="itemsList">
-  <app-item *ngFor="let equippedItem of equipments" [textLeft]="true" [itemId]="equippedItem.item.id" ></app-item>
-</div>
-</div>
-<div class="container-middle">
-<div class="itemsList-middle" *ngIf="middleSideEquipment$ | async as equipments ">
-  <app-item *ngFor="let equippedItem of equipments" [itemId]="equippedItem.item.id" ></app-item>
-</div>
+<div class="SearchBar">
+      <label for="searchCharacter"></label>
+        <input [(ngModel)]="characterName" type="search" id="searchCharacter">
+      <label for="searchRealm"></label>
+        <select [(ngModel)]="realm" name="realm" id="searchRealm">
+          <option value="">--Please choose an option--</option>
+          <option value="ysondre">Ysondre</option>
+        </select>
+    <button mat-stroked-button type="button" class="search-button" (click)="onClick()">Rechercher</button>
+  </div>
+<div class="CharMedia"  *ngIf="CharMedia$ | async as CharMedia"
+      [ngStyle]="{background:'url(' + CharMedia.assets[2].value + ')','background-size':'cover','background-position':'center'}">
+  <app-header *ngIf="CharAppearance$ |async as CharData" [CharName]="CharData.character.name" [CharRealm]="CharData.character.realm.name"
+              [CharPicture]="CharMedia.character.name">
+  </app-header>
+  <div class="container">
+    <div *ngIf="leftSideEquipment$ | async as equipments" class="itemsList">
+      <app-item *ngFor="let equippedItem of equipments" [textLeft]="false" [ngStyle]="{'flex-direction':'row-reverse'}" [itemId]="equippedItem.item.id"></app-item>
+    </div>
+    <div *ngIf="rightSideEquipment$ | async as equipments" class="itemsList">
+      <app-item *ngFor="let equippedItem of equipments" [textLeft]="true" [itemId]="equippedItem.item.id" ></app-item>
+    </div>
+  </div>
+  <div class="container-middle" *ngIf="middleSideEquipment$ | async as equipments">
+    <app-item *ngFor="let equippedItem of equipments" [itemId]="equippedItem.item.id" ></app-item>
+  </div>
 </div>

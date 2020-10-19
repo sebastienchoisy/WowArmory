@@ -1,4 +1,8 @@
 
+
+.SearchBar{
+  padding:4px;
+}
 .itemsList {
   display: flex;
   flex-direction: column;
@@ -26,5 +30,8 @@
   width: 750px;
   height: 550px;
   margin:auto;
+}
+.CharMedia{
+  height:100%;
 }
 

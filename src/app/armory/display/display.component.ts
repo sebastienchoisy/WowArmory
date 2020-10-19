@@ -13,7 +13,9 @@ import {map} from 'rxjs/operators';
 export class DisplayComponent implements OnInit {
   realm = 'ysondre';
   characterName = 'eleonara';
-  CharEquipmentCall$: Observable<any>;
+  url = 'https://render-eu.worldofwarcraft.com/character/ysondre/3/93452547-main.jpg';
+  CharEquipment$: Observable<any>;
+  CharMedia$: Observable<any>;
   leftSideEquipment$: Observable<any>;
   rightSideEquipment$: Observable<any>;
   middleSideEquipment$: Observable<any>;
@@ -23,8 +25,8 @@ export class DisplayComponent implements OnInit {
   rightSide: string[] = ['HANDS', 'WAIST', 'LEGS', 'FEET', 'FINGER_1', 'FINGER_2', 'TRINKET_1', 'TRINKET_2'];
   middleSide: string[] = ['MAIN_HAND', 'OFF_HAND'];
 
-  callPipeSlot(tab: string[]): Observable<any>{
-    return this.CharEquipmentCall$.pipe(
+  private getOrderedItems(tab: string[]): Observable<any>{
+    return this.CharEquipment$.pipe(
       map((res) => res.equipped_items
         .filter((item) => tab.findIndex((slot) => item.slot.type === slot) !== -1)
         .sort((a, b) =>
@@ -35,10 +37,11 @@ export class DisplayComponent implements OnInit {
 
   onClick(): void{
     this.CharAppearance$ = this.blizzardservice.getCharAppearance(this.realm, this.characterName);
-    this.CharEquipmentCall$ = this.blizzardservice.getCharEquipment(this.realm, this.characterName);
-    this.leftSideEquipment$ = this.callPipeSlot(this.leftSide);
-    this.rightSideEquipment$ = this.callPipeSlot(this.rightSide);
-    this.middleSideEquipment$ = this.callPipeSlot(this.middleSide);
+    this.CharEquipment$ = this.blizzardservice.getCharEquipment(this.realm, this.characterName);
+    this.CharMedia$ = this.blizzardservice.getCharMedia(this.realm, this.characterName);
+    this.leftSideEquipment$ = this.getOrderedItems(this.leftSide);
+    this.rightSideEquipment$ = this.getOrderedItems(this.rightSide);
+    this.middleSideEquipment$ = this.getOrderedItems(this.middleSide);
   }
   constructor(private blizzardservice: BlizzardService) {
   }

@@ -11,6 +11,7 @@ import { ArmoryComponent } from './armory/armory.component';
 import { HeaderComponent } from './armory/display/header/header.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {MatButtonModule} from '@angular/material/button';
         HttpClientModule,
         FormsModule,
         MatFormFieldModule,
-        MatButtonModule
+        MatButtonModule,
+        BrowserAnimationsModule
     ],
   providers: [],
   bootstrap: [AppComponent]

@@ -41,6 +41,13 @@ export class BlizzardService {
       )
     );
   }
+  public getCharMedia(realm: string, name: string): Observable<any> {
+    return this.token$.pipe(
+      switchMap((token) =>
+        this.httpClient.get(this.baseUrl + '/profile/wow/character/' + realm + '/' + name + '/character-media?namespace=profile-eu&locale=en_gb&access_token=' + token)
+      )
+    );
+  }
   public getItemAppearance(id: string): Observable<any>{
     return this.token$.pipe(
       switchMap((token) =>

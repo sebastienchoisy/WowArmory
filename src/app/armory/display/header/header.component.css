@@ -1,3 +1,27 @@
-#header-main{
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+.header-container{
+}
+.header-main{
+  margin:auto;
+  padding-top:5rem;
   height:10em;
+  display:block;
+  width: 750px;
+  font-family: 'Montserrat', sans-serif;
+}
+.CharLeft{
+  display:flex;
+  flex-direction:column;
+  float:left;
+  font-size: 50px;
+  padding-top: 15px;
+}
+.CharRight{
+  float:right;
+  font-size: 70px;
+  padding-top: 25px;
+}
+.CharRealm{
+  margin-top: 25%;
 }
