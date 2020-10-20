@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
 
 .header-container{
 }
@@ -14,7 +14,7 @@
   display:flex;
   flex-direction:column;
   float:left;
-  font-size: 50px;
+  font-size: 60px;
   padding-top: 15px;
 }
 .CharRight{
@@ -23,5 +23,6 @@
   padding-top: 25px;
 }
 .CharRealm{
-  margin-top: 25%;
+  margin-top: 15%;
+  font-size: 35px;
 }

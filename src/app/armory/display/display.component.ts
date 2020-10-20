@@ -11,8 +11,9 @@ import {map} from 'rxjs/operators';
   styleUrls: ['./display.component.css']
 })
 export class DisplayComponent implements OnInit {
-  realm = 'ysondre';
-  characterName = 'eleonara';
+  realm: string;
+  characterName: string;
+  error = false;
   url = 'https://render-eu.worldofwarcraft.com/character/ysondre/3/93452547-main.jpg';
   CharEquipment$: Observable<any>;
   CharMedia$: Observable<any>;
@@ -34,9 +35,14 @@ export class DisplayComponent implements OnInit {
         )),
     );
   }
+  private NameLowercase(): void{
+    this.characterName = this.characterName.toLowerCase();
+  }
 
   onClick(): void{
-    this.CharAppearance$ = this.blizzardservice.getCharAppearance(this.realm, this.characterName);
+    this.error = true;
+    this.NameLowercase();
+    this.CharAppearance$ = this.blizzardservice.getCharAppearance(this.realm, this.characterName );
     this.CharEquipment$ = this.blizzardservice.getCharEquipment(this.realm, this.characterName);
     this.CharMedia$ = this.blizzardservice.getCharMedia(this.realm, this.characterName);
     this.leftSideEquipment$ = this.getOrderedItems(this.leftSide);

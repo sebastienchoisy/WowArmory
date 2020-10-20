@@ -1,5 +1,20 @@
-
-
+#searchRealm,#searchCharacter{
+  padding:7px;
+  font-size:17px;
+  border-width:5px;
+  background-color:#e6ded1;
+  border-color:black;
+  border-radius: 8px ;
+  height:45px;
+}
+.error{
+  font-size: 40px;
+  text-align: center;
+  margin-top: 20%;
+}
+#searchRealm{
+  padding-top:6px;
+}
 .SearchBar{
   padding:4px;
 }
@@ -10,7 +25,6 @@
 .itemsList-middle{
   display: flex;
   flex-direction: row;
-
 }
 .container-middle{
   display:flex;
@@ -23,6 +37,8 @@
   background: #932626;
   color:white;
   margin-left:10px;
+  width:160px;
+  height:37px;
 }
 .container{
   display:flex;
@@ -34,4 +50,5 @@
 .CharMedia{
   height:100%;
 }
+
 

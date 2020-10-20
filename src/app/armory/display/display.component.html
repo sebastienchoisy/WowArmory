@@ -1,14 +1,19 @@
 <div class="SearchBar">
       <label for="searchCharacter"></label>
-        <input [(ngModel)]="characterName" type="search" id="searchCharacter">
+        <input [(ngModel)]="characterName" type="search" id="searchCharacter" placeholder="Name">
       <label for="searchRealm"></label>
         <select [(ngModel)]="realm" name="realm" id="searchRealm">
-          <option value="">--Please choose an option--</option>
+          <option value="archimonde">Archimonde</option>
           <option value="ysondre">Ysondre</option>
+          <option value="garona">Garona</option>
+          <option value="hyjal">Hyjal</option>
+          <option value="dalaran">Dalaran</option>
+          <option value="arathi">Arathi</option>
+
         </select>
     <button mat-stroked-button type="button" class="search-button" (click)="onClick()">Rechercher</button>
   </div>
-<div class="CharMedia"  *ngIf="CharMedia$ | async as CharMedia"
+<div class="CharMedia"  *ngIf="CharMedia$ | async as CharMedia; else show"
       [ngStyle]="{background:'url(' + CharMedia.assets[2].value + ')','background-size':'cover','background-position':'center'}">
   <app-header *ngIf="CharAppearance$ |async as CharData" [CharName]="CharData.character.name" [CharRealm]="CharData.character.realm.name"
               [CharPicture]="CharMedia.character.name">
@@ -25,3 +30,10 @@
     <app-item *ngFor="let equippedItem of equipments" [itemId]="equippedItem.item.id" ></app-item>
   </div>
 </div>
+<ng-template #show >
+  <div *ngIf="error">
+    <div class="error">
+  Ce personnage n'existe pas !
+    </div>
+  </div>
+  </ng-template>
